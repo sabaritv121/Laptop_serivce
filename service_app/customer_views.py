@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
-from service_app.models import AppointmentSchedule, Customer, Appointment
+from service_app.models import AppointmentSchedule, Customer, Appointment, Sales_add
 
 
 def schedule_cus(request):
@@ -39,3 +39,8 @@ def appointments(request):
     return render(request, 'customer/cus_appointment.html', {'appointment': a})
 
 
+def cus_view_items(request):
+
+    data=Sales_add.objects.all()
+
+    return render(request,'customer/cus_items.html',{'data':data})

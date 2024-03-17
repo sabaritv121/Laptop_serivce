@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 
 # # Create your views here.
@@ -107,3 +107,9 @@ def login_page(request):
 
 def new(request):
     return render(request,'admin/new.html')
+
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login_view')

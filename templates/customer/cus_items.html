@@ -1,0 +1,28 @@
+{% extends 'customer_dash.html' %}
+
+{% block content %}
+
+<div class="row">
+    {% for sales_rental in data %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <img src="{{ sales_rental.pic.url }}" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+                <h5 class="card-title">{{ sales_rental.brand }}</h5>
+                <p class="card-text">{{ sales_rental.description }}</p>
+                <p>Type: {{ sales_rental.get_type_display }}</p>
+                <p>Contact No: {{ sales_rental.contact_no }}</p>
+                <p>sellername: {{ sales_rental.user }}</p>
+                {% if sales_rental.status1 == 0 %}
+                    <p>Status: AVAILABLE</p>
+                {% elif sales_rental.status1 == 1 %}
+                    <p>Status: OUT OF STOCK</p>
+                {% endif %}
+               </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

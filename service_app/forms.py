@@ -3,7 +3,7 @@ import datetime
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from service_app.models import Login_view, Customer, Seles_Rentals, AppointmentSchedule
+from service_app.models import Login_view, Customer, Seles_Rentals, AppointmentSchedule, Sales_add
 
 
 class LoginRegister(UserCreationForm):
@@ -21,14 +21,14 @@ class CustomerRegister(forms.ModelForm):
     class Meta:
         model = Customer
         fields = "__all__"
-        exclude = ("user",)
+        exclude = ("user",'status1')
 
 class SellerRegister(forms.ModelForm):
 
     class Meta:
         model = Seles_Rentals
         fields = "__all__"
-        exclude = ("user",)
+        exclude = ("user",'status1')
 
 
 
@@ -62,3 +62,10 @@ def clean(self):
     if date < datetime.date.today():
         raise forms.ValidationError("Date can't be in the past")
     return cleaned_data
+
+
+class SalesRentalsForm(forms.ModelForm):
+    class Meta:
+        model = Sales_add
+        fields = '__all__'
+        exclude = ('user','status1')

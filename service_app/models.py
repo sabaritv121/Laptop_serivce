@@ -42,3 +42,21 @@ class Appointment(models.Model):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='appointment')
     schedule = models.ForeignKey(AppointmentSchedule, on_delete=models.CASCADE)
     status = models.IntegerField(default=0)
+
+
+class Sales_add(models.Model):
+    data= [
+
+        ('Laptop', 'Laptop'),
+        ('Tablets', 'Tablets'),
+        ('Laptops Rental', 'Laptops Rental'),
+        ('Tablets Rental', 'Tablets Rental'),
+
+    ]
+    user = models.ForeignKey(Login_view, on_delete=models.CASCADE)
+    item = models.CharField(max_length=50, choices=data)
+    description= models.TextField()
+    brand = models.CharField(max_length=100)
+    contact_no = models.CharField(max_length=100)
+    pic = models.FileField(upload_to='pic/')
+    status1 = models.BooleanField(default=0)
