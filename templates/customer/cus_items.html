@@ -1,11 +1,26 @@
 {% extends 'customer_dash.html' %}
 
 {% block content %}
+<style>
+ .custom-card {
+    background-color: tan
+</style>
+
 
 <div class="row">
+
+
+
+     {% for message in messages %}
+                <div class="alert alert-primary" role="alert">
+                    {{message}}
+                </div>
+                {% endfor %}
     {% for sales_rental in data %}
-    <div class="col-md-4 mb-4">
+    <div class="col-md-4 mb-4" >
+
         <div class="card">
+             <div  class="card custom-card">
             <img src="{{ sales_rental.pic.url }}" class="card-img-top" alt="Product Image">
             <div class="card-body">
                 <h5 class="card-title">{{ sales_rental.brand }}</h5>
@@ -16,11 +31,13 @@
                 {% if sales_rental.status1 == 0 %}
                     <p>Status: AVAILABLE</p>
                 {% elif sales_rental.status1 == 1 %}
-                    <p>Status: OUT OF STOCK</p>
+                    <p style="color:red">Status: OUT OF STOCK</p>
                 {% endif %}
+                <a type='button' href="{% url 'Add_to_cart' sales_rental.id %}" class="btn btn-primary">Order now</a>
                </a>
             </div>
         </div>
+             </div>
     </div>
     {% endfor %}
 </div>

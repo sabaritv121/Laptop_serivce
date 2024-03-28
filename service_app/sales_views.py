@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 
 from service_app.forms import SalesRentalsForm
-from service_app.models import Sales_add
+from service_app.models import Sales_add, Seles_Rentals, Cart
 
 
 def add_sales_rental(request):
@@ -45,3 +45,16 @@ def out_of_stock(request, id):
     n.save()
     messages.info(request, 'Status changed to Out of stock')
     return redirect('view_items')
+
+
+
+def Bookings(request):
+    u = request.user
+    # user = Seles_Rentals.objects.get(user=u)
+    # print(user)
+    ticket = Cart.objects.filter(sale__user=u)
+    print(ticket)
+    return render(request, 'sales/my_ticket.html', {'ticket': ticket})
+
+
+

@@ -32,6 +32,8 @@ urlpatterns = [
  path('take_appointment/<int:id>/', customer_views.take_appointment, name='take_appointment'),
  path('appointments', customer_views.appointments, name='appointments'),
  path('cus_view_items',customer_views.cus_view_items,name='cus_view_items'),
+ path('Add_to_cart/<int:id>/',customer_views.Add_to_cart,name="Add_to_cart"),
+ path('My_list',customer_views.My_list,name='My_list'),
 
 
  #sales_rental
@@ -39,4 +41,5 @@ urlpatterns = [
  path('view_items', sales_views.view_items, name='view_items'),
  path('instock/<int:id>/', sales_views.instock, name='instock'),
  path('out_of_stock/<int:id>/',sales_views.out_of_stock, name='out_of_stock'),
+ path("sale_Bookings",sales_views.Bookings,name = "sale_Bookings"),
 ]

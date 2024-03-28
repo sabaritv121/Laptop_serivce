@@ -65,10 +65,10 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href=" {% url 'add_sales_rental' %} " class="dropdown-item">Add</a>
                             <a href=" {% url 'view_items' %} " class="dropdown-item">view</a>
-<!--                            <a href=" {% static 'element.html' %} " class="dropdown-item">Other Elements</a>-->
+
                         </div>
                     </div>
-<!--                    <a href=" {% static 'widget.html' %} " class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
+                    <a href=" {% url 'sale_Bookings' %} " class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bookings</a>
 <!--                    <a href=" {% static 'form.html' %} " class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>-->
 <!--                    <a href=" {% static 'table.html' %} " class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
 <!--                    <a href=" {% static 'chart.html' %} " class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
@@ -253,7 +253,7 @@
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
+<!--                    <div class="d-flex align-items-center justify-content-between mb-4">-->
 
 
                         {% block content %}
