@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect,render
 
 from service_app.forms import ScheduleAdd
-from service_app.models import AppointmentSchedule, Appointment, Sales_add
+from service_app.models import AppointmentSchedule, Appointment, Sales_add, Complaints
 
 
 def schedule_add(request):
@@ -69,4 +69,20 @@ def adm_view_items(request):
 
     data=Sales_add.objects.all()
 
-    return render(request,'customer/cus_items.html',{'data':data})
+    return render(request,'admin/new.html',{'data':data})
+
+
+
+def feedbacks(request):
+    n = Complaints.objects.all()
+    return render(request,'admin/feedbacks.html',{'feedbacks':n})
+
+def reply_feedback(request,id):
+    feedback = Complaints.objects.get(id=id)
+    if request.method == 'POST':
+        r = request.POST.get('reply')
+        feedback.reply = r
+        feedback.save()
+        messages.info(request, 'Reply send for complaint')
+        return redirect('feedbacks')
+    return render(request, 'admin/admin_feedback.html', {'feedback': feedback})

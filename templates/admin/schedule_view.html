@@ -34,8 +34,8 @@
 
                     <th scope="col">START TIME</th>
                     <th scope="col">END TIME</th>
-<!--                    <th scope="col">Update</th>-->
-                    <th scope="col">DELETE</th>
+                    <th scope="col">LOCATION</th>
+                    <th scope="col">REMOVE</th>
 
                 </tr>
                 </thead>
@@ -49,6 +49,7 @@
 
                     <td>{{n.start_time}}</td>
                     <td>{{n.end_time}}</td>
+                    <td>{{n.location}}</td>
 <!--                    <td>-->
 <!--                        <a href="#">-->
 <!--                            <button type="button" class="btn btn-primary">Update</button>-->
@@ -60,7 +61,7 @@
                               onsubmit="window.mytest()">
                             {% csrf_token %}
                             <input type="hidden" value="{{ n.id }}"/>
-                            <button type="submit" class="btn btn-danger waves-effect width-md waves-light">Delete
+                            <button type="submit" class="btn btn-danger waves-effect width-md waves-light">Remove
                             </button>
                         </form>
                     </td>

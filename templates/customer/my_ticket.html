@@ -1,6 +1,14 @@
 {% extends 'customer_dash.html' %}
 {% block content %}
 
+<style>
+    .custom-card {
+        background-color: PapayaWhip ;
+    }
+
+
+</style>
+
 
 <div class="col-lg-10">
     {% for message in messages %}
@@ -17,7 +25,8 @@
                     <strong class="card-title">Booking</strong>
                 </div>
                 <div class="card-body">
-                    <div class="movie-ticket">
+                    <div class="card custom-card">
+<!--                    <div class="movie-ticket">-->
                         <div class="ticket-info">
                             <p><strong>Item:</strong> {{ n.sale.item }}</p>
                             <p><strong>Type:</strong> {{ n.sale.type }}</p>

@@ -6,7 +6,7 @@ urlpatterns = [
  # path("",views.test,name="test"),
  # path("",views.landing_page,name="landing"),
 
- path('',views.RegistrationView.as_view()),
+ path('',views.RegistrationView.as_view(),name="view"),
  path('login_view', views.login_page, name="login_view"),
  path("admin_dashboard",views.admin_dashboard,name='admin_dashboard'),
  path("customer_dashboard", views.customer_dashboard, name='customer_dashboard'),
@@ -26,6 +26,9 @@ urlpatterns = [
  path('approve_appointment/<int:id>/', admin_views.approve_appointment, name='approve_appointment'),
  path('reject_appointment/<int:id>/', admin_views.reject_appointment, name='reject_appointment'),
 
+ path('feedbacks', admin_views.feedbacks, name='feedbacks'),
+ path('reply_feedback/<int:id>/',admin_views.reply_feedback,name = 'reply_feedback'),
+
 
  #customer
  path("schedule_cus",customer_views.schedule_cus,name="schedule_cus"),
@@ -34,6 +37,9 @@ urlpatterns = [
  path('cus_view_items',customer_views.cus_view_items,name='cus_view_items'),
  path('Add_to_cart/<int:id>/',customer_views.Add_to_cart,name="Add_to_cart"),
  path('My_list',customer_views.My_list,name='My_list'),
+
+ path("feedback",customer_views.feedback,name="feedback"),
+ path("feedback_view", customer_views.feedback_view, name="feedback_view"),
 
 
  #sales_rental

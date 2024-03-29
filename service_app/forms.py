@@ -3,7 +3,7 @@ import datetime
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from service_app.models import Login_view, Customer, Seles_Rentals, AppointmentSchedule, Sales_add
+from service_app.models import Login_view, Customer, Seles_Rentals, AppointmentSchedule, Sales_add, Complaints
 
 
 class LoginRegister(UserCreationForm):
@@ -28,7 +28,7 @@ class SellerRegister(forms.ModelForm):
     class Meta:
         model = Seles_Rentals
         fields = "__all__"
-        exclude = ("user",'status1')
+        exclude = ("user",'status2')
 
 
 
@@ -49,7 +49,7 @@ class ScheduleAdd(forms.ModelForm):
 
     class Meta:
         model = AppointmentSchedule
-        fields = ('date', 'start_time','end_time')
+        fields = ('date', 'start_time','end_time','location')
 
 def clean(self):
     cleaned_data = super().clean()
@@ -64,8 +64,18 @@ def clean(self):
     return cleaned_data
 
 
+
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Complaints
+        fields = ('feedback',)
+
+
 class SalesRentalsForm(forms.ModelForm):
     class Meta:
         model = Sales_add
         fields = '__all__'
         exclude = ('user','status1')
+
+

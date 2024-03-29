@@ -7,3 +7,5 @@ admin.site.register(models.Login_view)
 admin.site.register(models.Customer)
 
 admin.site.register(models.Sales_add)
+
+admin.site.register(models.AppointmentSchedule)

@@ -1,14 +1,19 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
-from service_app.models import AppointmentSchedule, Customer, Appointment, Sales_add, Cart
+from service_app.filters import PlaceFilter, AppointmentFilter
+from service_app.forms import FeedbackForm
+from service_app.models import AppointmentSchedule, Customer, Appointment, Sales_add, Cart, Complaints
 
 
 def schedule_cus(request):
     s = AppointmentSchedule.objects.all()
+    appointmentFilter = AppointmentFilter(request.GET, queryset=s)
+    s=appointmentFilter.qs
 
     context = {
         'schedule': s,
+        'appointmentFilter':appointmentFilter,
 
     }
     return render(request, 'customer/cus_schedule.html', context)
@@ -42,8 +47,10 @@ def appointments(request):
 def cus_view_items(request):
 
     data=Sales_add.objects.all()
+    placeFilter = PlaceFilter(request.GET, queryset=data)
+    data = placeFilter.qs
 
-    return render(request,'customer/cus_items.html',{'data':data})
+    return render(request,'customer/cus_items.html',{'data':data,"placeFilter":placeFilter})
 
 
 def Add_to_cart(request, id):
@@ -77,3 +84,24 @@ def My_list(request):
     return render(request, 'customer/my_ticket.html', {'ticket': ticket})
 
 
+def feedback(request):
+    form=FeedbackForm
+    u= request.user
+
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.user = u
+            obj.save()
+            messages.info(request,"thank you for your feedback...!!!")
+            return redirect('feedback_view')
+    else:
+        form = FeedbackForm()
+    return render(request,'customer/add_feedback.html',{'form':form})
+
+
+def feedback_view(request):
+
+    u = Complaints.objects.filter(user=request.user)
+    return render(request,"customer/feedback.html",{'feedback':u})

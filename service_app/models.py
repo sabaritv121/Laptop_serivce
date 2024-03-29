@@ -35,6 +35,7 @@ class AppointmentSchedule(models.Model):
     date = models.DateField()
     start_time = models.TimeField()
     end_time = models.TimeField()
+    location = models.CharField(max_length=50 ,default="kerala")
 
 
 
@@ -59,6 +60,7 @@ class Sales_add(models.Model):
     user = models.ForeignKey(Login_view, on_delete=models.CASCADE)
     item = models.CharField(max_length=50, choices=data)
     type = models.CharField(max_length=50, choices=TYPE)
+    location = models.CharField(max_length=50)
     description= models.TextField()
     rate = models.CharField(max_length=10)
     contact_no = models.CharField(max_length=100)
@@ -72,3 +74,10 @@ class Cart(models.Model):
     address = models.CharField(max_length=200)
     mobile = models.CharField(max_length=10,default=0000000000)
     status = models.IntegerField(default=0)
+
+
+class Complaints(models.Model):
+    user = models.ForeignKey(Login_view, on_delete=models.DO_NOTHING)
+    feedback = models.TextField()
+    date = models.DateField(auto_now=True)
+    reply = models.TextField(null=True, blank=True)
