@@ -57,6 +57,7 @@ class RegistrationView(View):
             user1.save()
             return redirect('login_view')
 
+
         elif user.is_valid() and customer_form.is_valid():
             a = user.save(commit=False)
             a.is_customer = True
@@ -66,7 +67,8 @@ class RegistrationView(View):
             user1.save()
             return redirect('login_view')
 
-
+        else:
+            messages.info(request, 'Registration Failed...Password must contain at least 8 characters including alphabets and digits..')
 
         return render(request, 'index.html', {"user": user, "customer_form": customer_form,
                                             "seller_form": seller_form})
@@ -86,7 +88,6 @@ def login_page(request):
         if user is not None:
             login(request,user)
             if user.is_staff:
-
                 return redirect('admin_dashboard')
             elif user.is_customer:
 
@@ -94,7 +95,7 @@ def login_page(request):
 
             elif user.is_seller:
 
-                return redirect('seller_dashboard')
+                return redirect('sale_Bookings')
 
 
 

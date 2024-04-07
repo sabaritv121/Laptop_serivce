@@ -67,6 +67,7 @@ class Sales_add(models.Model):
     pic = models.FileField(upload_to='pic/')
     status1 = models.BooleanField(default=0)
 
+
 class Cart(models.Model):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE)
     sale = models.ForeignKey(Sales_add, on_delete=models.CASCADE)

@@ -39,6 +39,10 @@
                         <h5 class="card-title">{{ sales_rental.brand }}</h5>
                         <p class="card-text">{{ sales_rental.description }}</p>
                         <p>Type: {{ sales_rental.get_type_display }}</p>
+
+                        <h6 style="color: green;">
+                            Rate: {{sales_rental.rate}}
+                        </h6>
                         <p>Contact No: {{ sales_rental.contact_no }}</p>
                         <p>Seller Name: {{ sales_rental.user }}</p>
                         {% if sales_rental.status1 == 0 %}
