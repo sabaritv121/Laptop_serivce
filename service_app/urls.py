@@ -16,6 +16,8 @@ urlpatterns = [
  path("logout_view", views.logout_view, name='logout_view'),
 
 #admin
+ path('customers',admin_views.customers,name='customers'),
+ path('sellers',admin_views.sellers,name='sellers'),
  path("new",views.new,name="new"),
  path('schedule',admin_views.schedule_add,name='schedule'),
  path('schedule_view', admin_views.schedule, name='schedule_view'),

@@ -88,10 +88,10 @@ def login_page(request):
         if user is not None:
             login(request,user)
             if user.is_staff:
-                return redirect('admin_dashboard')
+                return redirect('appointment_admin')
             elif user.is_customer:
 
-                return redirect('customer_dashboard')
+                return redirect('cus_view_items')
 
             elif user.is_seller:
 

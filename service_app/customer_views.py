@@ -72,6 +72,18 @@ def Add_to_cart(request, id):
             obj.address = address
             obj.mobile = mobile
             obj.save()
+            try:
+
+                qty = int(qty)
+            except ValueError:
+
+                qty = 0
+
+            # Now perform the subtraction operation
+
+            sale.quantity = sale.quantity - qty
+            print(sale.quantity)
+            sale.save()
             messages.info(request, 'Booked Successfully')
             return redirect('cus_view_items')
     return render(request, 'customer/bookings.html', {'schedule': sale})

@@ -66,6 +66,7 @@ class Sales_add(models.Model):
     contact_no = models.CharField(max_length=100)
     pic = models.FileField(upload_to='pic/')
     status1 = models.BooleanField(default=0)
+    quantity = models.IntegerField(default=0)
 
 
 class Cart(models.Model):

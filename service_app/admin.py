@@ -9,3 +9,5 @@ admin.site.register(models.Customer)
 admin.site.register(models.Sales_add)
 
 admin.site.register(models.AppointmentSchedule)
+
+admin.site.register(models.Cart)

@@ -2,7 +2,16 @@ from django.contrib import messages
 from django.shortcuts import redirect,render
 
 from service_app.forms import ScheduleAdd
-from service_app.models import AppointmentSchedule, Appointment, Sales_add, Complaints
+from service_app.models import AppointmentSchedule, Appointment, Sales_add, Complaints, Customer, Seles_Rentals
+
+
+def customers(request):
+    data = Customer.objects.all()
+    return render(request,"admin/customerlist.html",{"data":data})
+
+def sellers(request):
+    data = Seles_Rentals.objects.all()
+    return render(request,"admin/sellelist.html",{"data":data})
 
 
 def schedule_add(request):
