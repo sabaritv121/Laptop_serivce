@@ -42,6 +42,8 @@ urlpatterns = [
 
  path("feedback",customer_views.feedback,name="feedback"),
  path("feedback_view", customer_views.feedback_view, name="feedback_view"),
+ path("checkout/<int:id>/",customer_views.checkout,name='checkout'),
+ path("checkout_rental/<int:id>/",customer_views.checkout_rental,name='checkout_rental'),
 
 
  #sales_rental

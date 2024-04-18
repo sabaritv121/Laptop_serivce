@@ -34,6 +34,14 @@
                             <p><strong>rate:</strong> {{ n.sale.rate }}</p>
 
                             <p><strong>Status:</strong> We will reach you soon</p>
+                             {% if n.status == 0 %}
+
+                                <a href ="{% url 'checkout' n.id %}" class="btn btn-warning">Pay advance</a>
+                            {% elif n.status == 1 %}
+
+                            <button class="btn btn-outline-success">Paid</button>
+
+                             {% endif %}
                         </div>
                     </div>
                 </div>

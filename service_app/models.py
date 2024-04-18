@@ -8,8 +8,6 @@ class Login_view(AbstractUser):
     is_seller = models.BooleanField(default=False)
 
 
-
-
 class Customer(models.Model):
     user = models.ForeignKey(Login_view, on_delete=models.CASCADE, related_name='customer')
     name = models.CharField(max_length=50)

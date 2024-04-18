@@ -54,7 +54,7 @@ def Bookings(request):
     # print(user)
     ticket = Cart.objects.filter(sale__user=u)
     print(ticket)
-    return render(request, 'sales/my_ticket.html', {'ticket': ticket})
+    return render(request,'sales/my_ticket.html', {'ticket': ticket})
 
 
 

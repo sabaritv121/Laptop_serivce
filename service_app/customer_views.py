@@ -117,3 +117,25 @@ def feedback_view(request):
 
     u = Complaints.objects.filter(user=request.user)
     return render(request,"customer/feedback.html",{'feedback':u})
+
+def checkout(request, id):
+    n = Cart.objects.get(id=id)
+    if request.method == 'POST':
+        n = Cart.objects.get(id=id)
+        n.status = 1
+        n.save()
+        messages.info(request, 'payment succesfull')
+        return redirect('My_list')
+
+    return render(request, 'customer/checkout.html', {'n': n})
+
+def checkout_rental(request, id):
+    n = Appointment.objects.get(id=id)
+    if request.method == 'POST':
+        n = Appointment.objects.get(id=id)
+        n.status = 3
+        n.save()
+        messages.info(request, 'payment succesfull')
+        return redirect('appointments')
+
+    return render(request, 'customer/checkout.html', {'n': n})
