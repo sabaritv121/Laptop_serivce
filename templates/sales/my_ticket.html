@@ -25,12 +25,16 @@
                             <p><strong>Mobile:</strong> {{ n.mobile }}</p>
 
                              <p><strong>Address:</strong> {{ n.address }}</p>
-<!--                            <p>-->
-<!--                                {% if n.status == 2 %}-->
+                            <p><strong>Payment status:</strong>
+                                {% if n.status == 0 %}
 
-<!--                                Advance Paid-->
-<!--                            {% endif %}-->
-<!--                            </p>-->
+                                Not Paid
+
+                                {% elif n.status == 1 %}
+
+                                Paid
+                                {% endif %}
+                            </p>
 
 
                         </div>
@@ -41,6 +45,8 @@
         {% if forloop.counter|divisibleby:3 and not forloop.last %}
     </div><div class="row">
         {% endif %}
+
+
         {% endfor %}
     </div>
 </div>

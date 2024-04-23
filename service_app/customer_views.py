@@ -56,12 +56,12 @@ def cus_view_items(request):
 def Add_to_cart(request, id):
     sale = Sales_add.objects.get(id=id)
     u = Customer.objects.get(user=request.user)
-    booking = Cart.objects.filter(user=u ,sale=sale)
-    if booking.exists():
-        messages.info(request, 'You Have Already Booked this product')
-        return redirect("cus_view_items")
-    else:
-        if request.method == 'POST':
+    # booking = Cart.objects.filter(user=u ,sale=sale)
+    # if booking.exists():
+    #     messages.info(request, 'You Have Already Booked this product')
+    #     return redirect("cus_view_items")
+    # else:
+    if request.method == 'POST':
             obj = Cart()
             obj.user = u
             obj.sale = sale
@@ -124,7 +124,7 @@ def checkout(request, id):
         n = Cart.objects.get(id=id)
         n.status = 1
         n.save()
-        messages.info(request, 'payment succesfull')
+        messages.info(request, 'payment successful')
         return redirect('My_list')
 
     return render(request, 'customer/checkout.html', {'n': n})
@@ -135,7 +135,7 @@ def checkout_rental(request, id):
         n = Appointment.objects.get(id=id)
         n.status = 3
         n.save()
-        messages.info(request, 'payment succesfull')
+        messages.info(request, 'payment successful')
         return redirect('appointments')
 
     return render(request, 'customer/checkout.html', {'n': n})

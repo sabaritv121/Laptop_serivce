@@ -64,13 +64,13 @@ class Sales_add(models.Model):
     contact_no = models.CharField(max_length=100)
     pic = models.FileField(upload_to='pic/')
     status1 = models.BooleanField(default=0)
-    quantity = models.IntegerField(default=0)
+    quantity = models.PositiveIntegerField(default=0)
 
 
 class Cart(models.Model):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE)
     sale = models.ForeignKey(Sales_add, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    quantity = models.PositiveIntegerField()
     address = models.CharField(max_length=200)
     mobile = models.CharField(max_length=10,default=0000000000)
     status = models.IntegerField(default=0)

@@ -51,17 +51,17 @@ class ScheduleAdd(forms.ModelForm):
         model = AppointmentSchedule
         fields = ('date', 'start_time','end_time','location')
 
-def clean(self):
-    cleaned_data = super().clean()
-    start = cleaned_data.get("start_time")
-    end = cleaned_data.get("end_time")
-    date = cleaned_data.get("date")
-    if start > end:
-        raise forms.ValidationError("End Time should be greater than start Time.")
+    def clean(self):
+        cleaned_data = super().clean()
+        start = cleaned_data.get("start_time")
+        end = cleaned_data.get("end_time")
+        date = cleaned_data.get("date")
+        if start > end:
+            raise forms.ValidationError("End Time should be greater than start Time.")
 
-    if date < datetime.date.today():
-        raise forms.ValidationError("Date can't be in the past")
-    return cleaned_data
+        if date < datetime.date.today():
+            raise forms.ValidationError("Date can't be in the past")
+        return cleaned_data
 
 
 
