@@ -84,7 +84,7 @@ def Add_to_cart(request, id):
             sale.quantity = sale.quantity - qty
             print(sale.quantity)
             sale.save()
-            messages.info(request, 'Booked Successfully')
+            messages.info(request, 'Item added to My orders')
             return redirect('cus_view_items')
     return render(request, 'customer/bookings.html', {'schedule': sale})
 
@@ -124,7 +124,7 @@ def checkout(request, id):
         n = Cart.objects.get(id=id)
         n.status = 1
         n.save()
-        messages.info(request, 'payment successful')
+        messages.info(request, 'Booking successful')
         return redirect('My_list')
 
     return render(request, 'customer/checkout.html', {'n': n})
@@ -135,7 +135,7 @@ def checkout_rental(request, id):
         n = Appointment.objects.get(id=id)
         n.status = 3
         n.save()
-        messages.info(request, 'payment successful')
+        messages.info(request, 'booking successful')
         return redirect('appointments')
 
     return render(request, 'customer/checkout.html', {'n': n})

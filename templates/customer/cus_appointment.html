@@ -41,14 +41,14 @@
                         {% if n.status == 0 %}
                           <button type="button" class="btn btn-warning">Approval Pending</button>
                         {% elif n.status == 1 %}
-                        <button type="button" class="btn btn-success">Booking Confirmed</button>
+                        <p>Please pay advance</p>
 
 
                          {% elif n.status == 2 %}
                         <h6>No slots available</h6>
 
                           {% elif n.status == 3 %}
-                        <h6>completed</h6>
+                        <h6>booking completed</h6>
  {% endif %}
 
 

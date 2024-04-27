@@ -33,11 +33,14 @@
                             <p><strong>Description:</strong> {{ n.sale.description }}</p>
                             <p><strong>rate:</strong> {{ n.sale.rate }}</p>
 
-                            <p><strong>Status:</strong> We will reach you soon</p>
+
                              {% if n.status == 0 %}
+                             <p><strong>Status:</strong> Payment pending</p>
+
 
                                 <a href ="{% url 'checkout' n.id %}" class="btn btn-warning">Pay advance</a>
                             {% elif n.status == 1 %}
+                            <p><strong>Status:</strong> We will reach you soon</p>
 
                             <button class="btn btn-outline-success">Paid</button>
 
@@ -48,7 +51,8 @@
             </div>
         </div>
         {% if forloop.counter|divisibleby:3 and not forloop.last %}
-    </div><div class="row">
+    </div>
+    <div class="row">
         {% endif %}
         {% endfor %}
     </div>
