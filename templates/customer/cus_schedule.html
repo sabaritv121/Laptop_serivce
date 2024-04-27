@@ -35,6 +35,7 @@
 
                     <th scope="col">Start Time</th>
                     <th scope="col">End Time</th>
+                      <th scope="col">Location</th>
                     <th scope="col">Take Appointment</th>
 
                 </tr>
@@ -47,6 +48,7 @@
 
                     <td>{{n.start_time}}</td>
                     <td>{{n.end_time}}</td>
+                     <td>{{n.location}}</td>
                     <td>
                         <a href="{% url 'take_appointment' n.id %}">
                             <button type="button" class="btn btn-primary">Book Appointment</button>

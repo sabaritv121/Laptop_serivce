@@ -23,6 +23,8 @@
 
                     <th scope="col">Start Time</th>
                     <th scope="col">End Time</th>
+                    <th scope="col">Location</th>
+
                     <th scope="col">Status</th>
                       <th scope="col">Payment Status</th>
 
@@ -37,6 +39,8 @@
                     <td>{{n.schedule.date}}</td>
                     <td>{{n.schedule.start_time}}</td>
                     <td>{{n.schedule.end_time}}</td>
+                    <td>{{n.schedule.location}}</td>
+
                     <td>
                         {% if n.status == 0 %}
                           <button type="button" class="btn btn-warning">Approval Pending</button>
