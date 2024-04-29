@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 
 from service_app import models
 from service_app.filters import PlaceFilter, AppointmentFilter
-from service_app.forms import FeedbackForm
+from service_app.forms import FeedbackForm, PaymentsForm
 from service_app.models import AppointmentSchedule, Customer, Appointment, Sales_add, Cart, Complaints
 
 
@@ -146,22 +146,36 @@ def feedback_view(request):
 
 def checkout(request, id):
     n = Cart.objects.get(id=id)
+    form = PaymentsForm()
     if request.method == 'POST':
+        form = PaymentsForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+
+
         n = Cart.objects.get(id=id)
         n.status = 1
         n.save()
         messages.info(request, 'Booking successful')
         return redirect('My_list')
 
-    return render(request, 'customer/checkout.html', {'n': n})
+    return render(request, 'customer/checkout.html', {'n': n,'form':form})
 
 def checkout_rental(request, id):
     n = Appointment.objects.get(id=id)
+    form = PaymentsForm()
     if request.method == 'POST':
-        n = Appointment.objects.get(id=id)
-        n.status = 3
-        n.save()
-        messages.info(request, 'booking successful')
-        return redirect('appointments')
 
-    return render(request, 'customer/checkout.html', {'n': n})
+            form = PaymentsForm(request.POST)
+            if form.is_valid():
+                form.save()
+                n = Appointment.objects.get(id=id)
+                n.status = 3
+                n.save()
+                messages.info(request, 'booking successful')
+                return redirect('appointments')
+
+
+
+    return render(request, 'customer/checkout.html', {'n': n,'form':form})

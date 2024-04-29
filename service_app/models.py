@@ -81,3 +81,8 @@ class Complaints(models.Model):
     feedback = models.TextField()
     date = models.DateField(auto_now=True)
     reply = models.TextField(null=True, blank=True)
+
+class Payments(models.Model):
+    card_number = models.CharField(max_length=16)
+    expiry = models.CharField(max_length=10)
+    cvv = models.CharField(max_length=3)
