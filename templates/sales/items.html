@@ -43,13 +43,13 @@
 <!--                        {% elif sales_rental.status1 == 1 %}-->
 <!--                            <p style="color: red;">Status: OUT OF STOCK</p>-->
 <!--                        {% endif %}-->
-                        {% if sales_rental.status1 == 0 %}
+                        {% if sales_rental.quantity > 0 %}
                     <p>Status: AVAILABLE</p>
-                {% elif sales_rental.status1 == 1 %}
+                {% elif sales_rental.quantity == 0 %}
                     <p style="color:red">Status: OUT OF STOCK</p>
                 {% endif %}
-                <a type='button' href="{% url 'instock' sales_rental.id %}" class="btn btn-primary">IN STOCK</a>
-                <a type='button' href="{% url 'out_of_stock' sales_rental.id %}" class="btn btn-primary">OUT OF STOCK</a>
+<!--                <a type='button' href="{% url 'instock' sales_rental.id %}" class="btn btn-primary">IN STOCK</a>-->
+<!--                <a type='button' href="{% url 'out_of_stock' sales_rental.id %}" class="btn btn-primary">OUT OF STOCK</a>-->
 
                     </div>
                 </div>
